@@ -31,6 +31,7 @@ Route::middleware([
     Route::get('/category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
     Route::get('/category/delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
     Route::post('/category/update',[CategoryController::class,'update'])->name('category.update');
+    Route::get('/category/status/{id}',[CategoryController::class,'status'])->name('category.status');
 
     Route::get('/author',[AuthorController::class,'index'])->name('author');
     Route::post('/author/add',[AuthorController::class,'save'])->name('author.create');

@@ -17,7 +17,7 @@
                         <div class="row mb-3">
                             <label  class="col-sm-3 col-form-label">Category Name</label>
                             <div class="col-sm-9">
-                                <input type="hidden" value="{{ $category->id }}" name="id">
+                                <input type="hidden" value="{{ $category->id }}" name="category_id">
                                 <input type="text" class="form-control" value="{{$category->category_name}}" id="" name="category_name" placeholder="Enter Category">
                             </div>
                         </div>

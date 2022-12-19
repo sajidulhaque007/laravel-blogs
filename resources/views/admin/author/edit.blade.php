@@ -16,7 +16,7 @@
                         <div class="row mb-3">
                             <label  class="col-sm-3 col-form-label">Author Name</label>
                             <div class="col-sm-9">
-                                <input type="hidden" value="{{ $author->id }}" name="id">
+                                <input type="hidden" value="{{ $author->id }}" name="author_id">
                                 <input type="text" class="form-control" value="{{$author->name}}" id="" name="name" placeholder="Enter Author">
                             </div>
                         </div>

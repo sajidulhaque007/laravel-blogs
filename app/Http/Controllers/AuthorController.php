@@ -27,7 +27,7 @@ class AuthorController extends Controller
         }
 
         public function update(Request $request){
-            Author::updateAuthor($request);
+            Author::saveAuthor($request);
             return redirect(route('author'));
         }
     public function delete($id){

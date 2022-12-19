@@ -26,7 +26,7 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request){
-        Category::updateCategory($request);
+        Category::saveCategory($request);
         return redirect(route('category'));
     }
     public function delete($id){
@@ -35,4 +35,14 @@ class CategoryController extends Controller
         return back();
     }
 
+    public function status($id){
+        $category = Category::find($id);
+        if($category->status ==1){
+            $category->status = 0;
+        }else{
+            $category->status = 1;
+        }
+        $category->save();
+        return back();
+    }
 }
