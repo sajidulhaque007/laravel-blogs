@@ -51,11 +51,6 @@
                             <td>{{ $category->status == 1 ? 'published' : 'unpublished' }}</td>
                             <td>
                                 <a href="{{ route('category.edit',$category->id) }}" class="btn btn-sm btn-primary">edit</a>
-                                @if($category->status ==1)
-                                            <a href="{{ route('category.status',['id'=>$category->id]) }}" class="btn btn-sm btn-warning">Unpublish</a>
-                                        @else
-                                        <a href="{{ route('category.status',['id'=>$category->id]) }}" class="btn btn-sm btn-success">Publish</a>
-                                        @endif
                                 <a href="{{ route('category.delete',$category->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Ary you sure to delete this..');">Delete</a>
                             </td>
                         </tr>

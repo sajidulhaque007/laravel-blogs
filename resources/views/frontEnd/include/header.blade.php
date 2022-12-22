@@ -13,13 +13,13 @@
                 <li><a href="{{ route('home') }}">Blog</a></li>
                 <li class="dropdown"><a href="{{ route('allBlog.category') }}"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
-                       @foreach ($categories as $category) 
-                        <li><a href="{{ route('category.details',$category->id) }}">{{ $category->category_name }}</a></li>                       
+                       @foreach ($categories as $category)
+                        <li><a href="{{ route('category.details',$category->id) }}">{{ $category->category_name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
 
-                <li><a href="{{ route('about') }}">About</a></li>
+                <li><a href="{{ route('about') }}">Abouts</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </nav>

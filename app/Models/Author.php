@@ -10,13 +10,13 @@ class Author extends Model
     use HasFactory;
     private static $author;
     public static function saveAuthor($request){
-        if($request->author_id){
-            self::$author = Author::find($request->author_id);
-        } else{
-            self::$author = new Author();
-        }
+        self::$author = new Author();
         self::$author->name = $request->name;
         self::$author->save();
     }
-   
+    public static function updateAuthor($request){
+        self::$author = Author::find($request->id);
+        self::$author->name = $request->name;
+        self::$author->save();
+    }
 }

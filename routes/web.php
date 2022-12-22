@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ZenBlogController;
 use App\Http\Controllers\AuthorController;
@@ -19,6 +21,8 @@ Route::post('/user/register',[ZenBlogController::class,'saveUser'])->name('user.
 Route::get('/user/login',[ZenBlogController::class,'userLogin'])->name('user.login');
 Route::post('/user/login',[ZenBlogController::class,'loginCheck'])->name('user.login');
 Route::get('/user/logout',[ZenBlogController::class,'logout'])->name('user.logout');
+Route::post('/new-comment',[CommentController::class,'newComment'])->name('new.comment');
+Route::post('/new-reply',[ReplyController::class,'newReply'])->name('new.reply');
 
 Route::middleware([
     'auth:sanctum',
@@ -31,7 +35,6 @@ Route::middleware([
     Route::get('/category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
     Route::get('/category/delete/{id}',[CategoryController::class,'delete'])->name('category.delete');
     Route::post('/category/update',[CategoryController::class,'update'])->name('category.update');
-    Route::get('/category/status/{id}',[CategoryController::class,'status'])->name('category.status');
 
     Route::get('/author',[AuthorController::class,'index'])->name('author');
     Route::post('/author/add',[AuthorController::class,'save'])->name('author.create');

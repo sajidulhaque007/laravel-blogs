@@ -16,13 +16,12 @@ class BlogController extends Controller
             'authors' =>Author::all()
         ]);
     }
-
     public function save(Request $request){
         Blog::addBlog($request);
         return back();
     }
-
     public function manage(){
+
         return view('admin.blog.manage',[
             'blogs' => DB::table('blogs')
                 ->join('categories','blogs.category_id','=','categories.id')
@@ -31,7 +30,6 @@ class BlogController extends Controller
                 ->get()
         ]);
     }
-
     public function edit($id){
         $blog =Blog::find($id);
         return view('admin.blog.edit',[
@@ -40,18 +38,16 @@ class BlogController extends Controller
             'authors'=>Author::all()
         ]);
     }
-
     public function update(Request $request){
-        Blog::addBlog($request);
+
+        Blog::blogUpdate($request);
         return redirect(route('blog.manage'));
     }
-
     public function delete($id){
         $blog = Blog::find($id);
         $blog->delete();
         return back();
     }
-
     public function status($id){
         $blog = Blog::find($id);
         if($blog->status ==1){
