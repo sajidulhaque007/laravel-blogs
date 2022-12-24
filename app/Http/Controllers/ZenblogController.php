@@ -49,7 +49,7 @@ class ZenBlogController extends Controller
                 ->join('blog_users','comments.user_id','blog_users.id')
                 ->select('comments.*','blog_users.name')
                 ->where('comments.blog_id',$blog->id)
-//                ->where('comments.status',1)
+            //    ->where('comments.status',1)
                 ->get();
                 
             $replies = DB::table('replies')
@@ -57,6 +57,7 @@ class ZenBlogController extends Controller
                         ->join('blog_users','replies.commenter_id','blog_users.id')
                         ->select('replies.*','blog_users.name')
                         ->where('replies.blog_id',$blog->id)
+                        ->orderBy('replies.created_at','asc')
                         ->get();
 
                         // return $replies;
@@ -90,7 +91,7 @@ class ZenBlogController extends Controller
 
     public function saveUser(Request $request){
         BlogUser::saveUser($request);
-        return back();
+        return redirect(route('user.login'));
     }
 
     public function userLogin(){

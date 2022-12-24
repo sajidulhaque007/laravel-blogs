@@ -41,12 +41,20 @@
                                     <div class="comment-body">
                                         {{ $comment->comment }}
                                     </div>
+                                    @if(Session::get('userId') == $comment->user_id)
+                                    {{-- <h6><i class="bi bi-three-dots"></i></i></h6> --}}
+                                    <a href="">edit</a>
+                                    @endif
 
+                                 
+                                    
+                                        
+                                    
                                     <div class="comment-replies bg-light p-3 mt-3 rounded">
                                         @foreach($replies as $reply)
-                                        <br>
+                                        {{-- <br> --}}
                                             @if($comment->id == $reply->comment_id)
-                                        <div class="reply d-flex">
+                                        <div class="reply d-flex mt-2">
                                             <div class="flex-shrink-0">
                                                 <div class="avatar avatar-sm rounded-circle">
                                                     <img class="avatar-img" src="{{ asset('frontEnd') }}/assets/img/person-3.jpg" alt="" class="img-fluid">
@@ -60,11 +68,18 @@
                                                 <div class="reply-body">
                                                     {{ $reply->reply }}
                                                 </div>
+                                                @if(Session::get('userId') == $reply->commenter_id)
+                                                {{-- <h6><i class="bi bi-three-dots"></i></i></h6> --}}
+                                                <a href="">edit</a>
+                                                @endif
                                             </div>           
                                         </div> 
                                         @endif
                                         @endforeach
                                     </div>
+                                    
+                                    
+                                   
                                     <div class="col-lg-12 mt-2">
                                         <div class="row">
                                             <form action="{{ route('new.reply') }}" method="post">
@@ -82,6 +97,7 @@
                                         </form>
                                         </div>
                                     </div> 
+                                    
                                 </div>
                             </div>
                             @endforeach
