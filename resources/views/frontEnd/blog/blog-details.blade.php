@@ -46,10 +46,6 @@
                                     <a href="">edit</a>
                                     @endif
 
-                                 
-                                    
-                                        
-                                    
                                     <div class="comment-replies bg-light p-3 mt-3 rounded">
                                         @foreach($replies as $reply)
                                         {{-- <br> --}}

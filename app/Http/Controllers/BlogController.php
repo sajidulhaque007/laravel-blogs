@@ -21,7 +21,6 @@ class BlogController extends Controller
         return back();
     }
     public function manage(){
-
         return view('admin.blog.manage',[
             'blogs' => DB::table('blogs')
                 ->join('categories','blogs.category_id','=','categories.id')
@@ -39,8 +38,7 @@ class BlogController extends Controller
         ]);
     }
     public function update(Request $request){
-
-        Blog::blogUpdate($request);
+        Blog::addBlog($request);
         return redirect(route('blog.manage'));
     }
     public function delete($id){

@@ -27,7 +27,7 @@
                                 <div class="col-sm-9">
                                     <select name="author_id" id="author" class="form-control">
                                         @foreach($authors as $author)
-                                            <option value="{{ $author->id }}"{{ old('author_id', $blog->author_id) == $author->name ? 'selected' : '' }}>{{ $author->name }}</option>
+                                            <option value="{{ $author->id }}"{{ old('author_id', $blog->author_id) == $author->id ? 'selected' : '' }}>{{ $author->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

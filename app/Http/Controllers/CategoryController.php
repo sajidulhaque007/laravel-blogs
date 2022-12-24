@@ -26,7 +26,7 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request){
-        Category::updateCategory($request);
+        Category::saveCategory($request);
         return redirect(route('category'));
     }
     public function delete($id){
