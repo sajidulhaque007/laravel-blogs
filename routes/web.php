@@ -24,11 +24,14 @@ Route::get('/user/logout',[ZenBlogController::class,'logout'])->name('user.logou
 Route::post('/new-comment',[CommentController::class,'newComment'])->name('new.comment');
 Route::post('/new-reply',[ReplyController::class,'newReply'])->name('new.reply');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+Route::group(['middleware'=>'blogUser'],function(){
+    Route::get('/blog-details/{slug}',[ZenBlogController::class,'blogDetails'])->name('blog.details');
+    Route::get('/user/logout',[ZenBlogController::class,'logout'])->name('user.logout');
+    Route::post('/new-comment',[CommentController::class,'newComment'])->name('new.comment');
+});
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('/category',[CategoryController::class,'index'])->name('category');
     Route::post('/category/add',[CategoryController::class,'save'])->name('category.create');

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Session;
 
 class BlogUserMiddleware
 {
@@ -16,6 +17,11 @@ class BlogUserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $response = $next($request);
+
+        if(!Session::get('userId')){
+            return redirect(route('user.login'));
+        } 
+        return $response;
     }
 }

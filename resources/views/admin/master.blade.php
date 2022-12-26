@@ -79,6 +79,38 @@
     new PerfectScrollbar(".best-product")
     new PerfectScrollbar(".top-sellers-list")
 </script>
+<script>
+    function checkCategoryName(){
+         var category = $('#category').val();
+         var regex =/^[a-z,A-Z, ]{3,15}$/;
+         if(regex.test(category)){
+             $('#errorMessage').html(' ');
+             return true;
+         } else{
+           $('#errorMessage').html('You can use 3 to 15 characters only and cannot use hyphen and number');
+           return false;
+        }
+    }
+    $('#category').keyup(function(){
+    var res= checkCategoryName();
+        if(res == true){
+            $('#catBtn').prop('disabled',false)
+            return true;
+        } else {
+            $('#catBtn').prop('disabled',true)
+            return false;
+        }
+
+    });
+    $('#catForm').submit( function (){
+        checkCategoryName();
+        if(checkCategoryName() == true){
+            return true;
+        } else {
+            return false;
+        }
+    });
+</script>
 
 
 </body>

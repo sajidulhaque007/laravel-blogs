@@ -4,8 +4,17 @@
         <div class="col-xl-9 mx-auto">
             <hr/>
             <div class="card">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body">
-                    <form action="{{ route('category.create') }}" method="post">
+                    <form id="catForm" action="{{ route('category.create') }}" method="post">
                         @csrf
                     <div class="border p-4 rounded">
                         <div class="card-title d-flex align-items-center">
@@ -15,14 +24,15 @@
                         <div class="row mb-3">
                             <label  class="col-sm-3 col-form-label">Category Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="" name="category_name" placeholder="Enter Category">
+                                <input type="text" class="form-control" id="category" name="category_name" placeholder="Enter Category">
+                                <span id="errorMessage" class="text-danger"></span>
                             </div>
                         </div>
 
                         <div class="row">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-9">
-                                <button type="submit" class="btn btn-primary px-5">Submit</button>
+                                <button type="submit" id="catBtn" class="btn btn-primary px-5">Submit</button>
                             </div>
                         </div>
                     </div>

@@ -29,7 +29,7 @@
                             <br>
                         </div>
                         <div class="form-group col-md-12">
-                            <input type="password" class="form-control" name="phone" id="password" placeholder="Enter password" required>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
                             <br>
                         </div>
                     </div>

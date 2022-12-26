@@ -98,6 +98,8 @@ class ZenBlogController extends Controller
         return view('frontEnd.user.login');
     }
 
+   
+
     public function loginCheck(Request $request){
         $userInfo = BlogUser::where('email',$request->user_name)
                             ->orWhere('phone',$request->user_name)
