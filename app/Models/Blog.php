@@ -10,6 +10,17 @@ class Blog extends Model
     use HasFactory;
     private static $blog;
     public static function addBlog($request){
+        $request->validate([
+            'category_id' => 'required',
+            'author_id' => 'required',
+            'title' => 'required|unique:blogs',
+            'slug' => 'required|unique:blogs',
+            'description' => 'required',
+            'date' => 'required',
+            'blog_type' => 'required',
+            'status' => 'required',
+            'image' => 'required',
+        ]);
         if($request->blog_id){
             self::$blog = Blog::find($request->blog_id);
         } else{

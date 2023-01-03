@@ -10,6 +10,9 @@ class Category extends Model
     use HasFactory;
     private static $category;
     public static function saveCategory($request){
+        $request->validate([
+            'category_name' => 'required|unique:categories',
+        ]);
         if($request->category_id){
             self::$category =Category::find($request->category_id);
             self::$category->status = $request->status;

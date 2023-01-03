@@ -10,6 +10,9 @@ class Author extends Model
     use HasFactory;
     private static $author;
     public static function saveAuthor($request){
+        $request->validate([
+            'name' => 'required|unique:authors',
+        ]);
         if($request->author_id){
             self::$author = Author::find($request->author_id);
         } else{
