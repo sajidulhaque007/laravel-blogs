@@ -56,8 +56,12 @@
                       style="display: none;position: relative;left: -255px;top: 50px;">
                       <form action="#" method="post">
                         @csrf
-                        <input type="text" name="edited_comment" value="{{ $comment->comment }}">
-                        <button type="submit">Save</button>
+                        <div class="row">
+                          <div class="col-12 mb-3">
+                            <textarea class="form-control" name="comment" placeholder="comment" cols="30" rows="10">{{ $comment->comment }}</textarea>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">update</button>
                       </form>
                     </div>
                   </div>
@@ -106,7 +110,6 @@
                         <input type="hidden" name="comment_id" value="{{ $comment->id }}">
                         <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                         <div class="col-12 mb-3">
-
                           <textarea class="form-control" name="reply" placeholder="Reply" cols="2" rows="2"></textarea>
                         </div>
                         <div class="col-12">
