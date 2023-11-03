@@ -47,15 +47,23 @@
                           <i class="bi bi-three-dots"></i>
                         </h6>
                         <div class="dropdown-menu">
-                          <a href="" class="dropdown-item">edit</a>
+                          <a href="javascript:void(0);" class="dropdown-item"
+                            onclick="showEditCommentForm({{ $comment->id }})">edit</a>
                         </div>
                       </div>
                     @endif
+                    <div id="editCommentForm{{ $comment->id }}"
+                      style="display: none;position: relative;left: -255px;top: 50px;">
+                      <form action="#" method="post">
+                        @csrf
+                        <input type="text" name="edited_comment" value="{{ $comment->comment }}">
+                        <button type="submit">Save</button>
+                      </form>
+                    </div>
                   </div>
                   <div class="comment-body">
                     {{ $comment->comment }}
                   </div>
-
                   <div class="comment-replies bg-light p-3 mt-3 rounded">
                     @foreach ($replies as $reply)
                       {{-- <br> --}}
@@ -85,8 +93,6 @@
                             <div class="reply-body">
                               {{ $reply->reply }}
                             </div>
-                            @if (Session::get('userId') == $reply->commenter_id)
-                            @endif
                           </div>
                         </div>
                       @endif
@@ -208,4 +214,14 @@
       </div>
     </div>
   </section>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function showEditCommentForm(commentId) {
+      // Hide all edit comment forms
+      $('[id^="editCommentForm"]').hide();
+      $('.comment-body').addClass("d-none");
+      // Show the edit comment form for the selected comment
+      $('#editCommentForm' + commentId).show();
+    }
+  </script>
 @endsection
